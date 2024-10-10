@@ -7,3 +7,4 @@ tests/
 nanotest/
 .idea
 .vscode/sftp.json
+build/

@@ -169,6 +169,12 @@ def get_args():
         metavar="N",
     )
     filtering.add_argument(
+        "--samplesize",
+        help="Number of reads sampled for read length plots.",
+        type=int,
+        metavar="N",
+    )
+    filtering.add_argument(
         "--minlength",
         help="Drop reads shorter than length specified.",
         type=int,

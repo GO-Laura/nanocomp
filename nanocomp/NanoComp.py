@@ -81,7 +81,7 @@ def main():
             as_tsv=args.tsv_stats,
         )
         if args.plot != "false":
-            plots = make_plots(datadf, settings)
+            plots = make_plots(datadf, settings, args)
             make_report(plots, settings["path"], stats_df=stats_df)
         logging.info("Succesfully processed all input.")
     except Exception as e:
@@ -89,8 +89,9 @@ def main():
         raise
 
 
-def make_plots(df, settings):
-    sub_df = subsample_datasets(df)
+# @NOTE(ds): Parameterized sample size for subsampling.
+def make_plots(df, settings, args):
+    sub_df = subsample_datasets(df, minimal=args.samplesize)
     df["log length"] = np.log10(df["lengths"])
     sub_df["log length"] = np.log10(sub_df["lengths"])
     plots = []
